@@ -2,10 +2,15 @@
 
 .footer-copyright {
   overflow: hidden;
+  display: flex;
+  position: relative;
+  font-size: 12px;
+  align-items: center;
 }
 
 .footer-copyright-text {
-  display: block;
+  display: flex;
   position: relative;
   font-size: 14px;
+  align-items: center;
 }

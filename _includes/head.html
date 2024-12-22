@@ -32,7 +32,7 @@
   {% include analytics.html %}
 {% endif %}
 
-{% if site.mathjax %}
+<!-- {% if site.mathjax %}
 <script
   src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"
   async>
@@ -118,13 +118,45 @@ MathJax.Hub.Queue(function() {
   });
 });
 </script>
-{% endif %}
+{% endif %} -->
 
-{% if site.diagram %}
+<!-- {% if site.diagram %}
 <script src="{{ site.baseurl }}/assets/scripts/jekyllpaper.js" async></script>
 <script
   src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"
   onload="javascript:loadMermaid();"
   async>
 </script>
+{% endif %} -->
+{% if page.use_latex %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<style>
+/* .katex {
+  font-family: monospace; 
+  font-size: 1.1em;
+  font-weight: 1;
+  word-spacing: 1.5;
+} */
+/* .katex-display {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-size: 1.1em
+} */
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            // {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError : false
+      });
+  });
+</script>
 {% endif %}
+  </head>

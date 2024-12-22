@@ -3,12 +3,16 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: Courier New, Courier, monospace;
+  // font-family: Courier New, Courier, monospace;
+  
 }
 
 html,
 body {
   height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Computer Modern, Courier New, Courier, monospace;
 }
 
 a {
@@ -26,6 +30,10 @@ blockquote {
   border-left: 2px solid #888;
 }
 
+.katex { 
+  font-family: monospace;
+}
+
 h1,
 h2,
 h3,
@@ -35,6 +43,8 @@ h6 {
   line-height: normal;
   margin: 5px 0;
   text-indent: 0;
+  padding: 0;
+  font-family: Courier New, Courier, monospace;
 }
 
 h2 {
