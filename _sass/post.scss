@@ -1,12 +1,17 @@
 @charset "utf-8";
 
+.post{
+ overflow: hidden;
+}
+
 .post-title {
   text-align: center;
 }
 
 .post-content {
   // scrollable for mobile devices
-  overflow-x: hidden;
+  overflow:hidden;
+  // height: 100%;
   // overflow-x: scroll;
 }
 

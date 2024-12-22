@@ -17,6 +17,13 @@ body {
   font-family: Computer Modern, Courier New, Courier, monospace;
 
 }
+head{
+
+  overflow: hidden;
+}
+body{
+  overflow: initial;
+}
 
 a {
   // text-decoration: none;
