@@ -1,9 +1,10 @@
 ---
 layout: post
-title:  "Welcome to Jekyll Paper!"
-date:   2018-02-11
-last_modified_at: 2019-10-16
-categories: [Jekyll Paper]
+title:  "Lazy evaluation and amortized cost analysis"
+date:   2024-12-22
+last_modified_at: 
+categories: [Functional Programming]
+tags: [Lazy evaluation]
 use_latex: true
 ---
 
