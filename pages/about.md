@@ -15,15 +15,15 @@ permalink: /about/
  - [x] References footnote
  - [x] Side notes in posts
  - [x] Add footnotes
- - [ ] "Abstract"
+ - [x] "Abstract"
  - [x] Contents
  - [ ] Change logo of website
  - [ ] Search on a website
  - [ ] better code snippets
  - [x] add contact me with github form
  - [x] Add numbering of posts
- - [ ] Add numbering to headers
- - [ ] Remove numbering of Footnote and References headers in TOC
+ - [ ] Add optional numbering to headers
+ - [ ] Remove numbering of Footnote, Abstract and References headers in TOC
  -->
 
 

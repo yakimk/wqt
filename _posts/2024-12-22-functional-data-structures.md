@@ -30,6 +30,14 @@ Consider a simple **BST** (binary search tree). Here is a simple implementation 
 
 ### Some smaller section
 
+{% include toggle_note.html id="example" link_text="Read more about immutability" %}
+This is the hidden note content. It smoothly slides down when you click the link and retracts when you click again.
+Functional programming emphasizes immutability, which ensures that objects cannot be modified after they are created.
+{% end include %}
+
+First let's deal with one of the main pillars of functional data structures **immutability**.
+Here is a simple example to see why it might be a problem.
+
 #### Smaller
 asdaskdj
 ##### SMALLL
