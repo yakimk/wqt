@@ -7,6 +7,7 @@ categories: [Functional Programming]
 tags: [Lazy evaluation]
 use_latex: true
 ind : 1
+comments: true
 ---
 
 

@@ -4,4 +4,25 @@ title: About
 permalink: /about/
 ---
 
-[Tools used by this website]({{ site.baseurl }}/info/###Tools used by this website)
+## Tools used by this website
+- [Jekyll](https://jekyllrb.com/)
+- [Katex](https://katex.org/) for Latex rendering
+- [Theme](https://github.com/ghosind/Jekyll-Paper-GithubA)
+- [utterances](https://github.com/utterance/utterances) for github contact form
+
+
+<!-- ### Todo
+ - [x] References footnote
+ - [x] Side notes in posts
+ - [x] Add footnotes
+ - [ ] "Abstract"
+ - [ ] Contents
+ - [ ] Change logo of website
+ - [ ] Search on a website
+ - [ ] better code snippets
+ - [x] add contact me with github form
+ - [x] Add numbering of posts -->
+
+
+## Contact me
+{% include contact.html %}

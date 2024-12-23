@@ -72,8 +72,36 @@ layout: default
       </div>
       {% endif %}
     </div>
-    {% if site.comments %}
-      {% include comments.html %}
+    {% if page.comments %}
+
+        <!-- Button to load comments -->
+        <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+
+        <!-- Comments Section, hidden by default -->
+        <div id="comments-section" style="display: none;">
+          <script src="https://utteranc.es/client.js"
+            repo="yakimk/wqt"        
+            issue-term="pathname"       
+            label="comment"             
+            theme="github-light"           
+            crossorigin="anonymous"
+            async>
+          </script>
+        </div>
+    
     {% endif %}
   </div>
 </article>
+<script>
+  // JavaScript to toggle the visibility of the comments section
+  document.getElementById("comment-button").addEventListener("click", function() {
+    var commentsSection = document.getElementById("comments-section");
+    if (commentsSection.style.display === "none") {
+      commentsSection.style.display = "block";
+      this.textContent = "Hide Comments";  // Change button text to "Hide Comments"
+    } else {
+      commentsSection.style.display = "none";
+      this.textContent = "Show Comments";  // Change button text back to "Show Comments"
+    }
+  });
+</script>

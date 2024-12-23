@@ -55,7 +55,7 @@ h6 {
   line-height: normal;
   margin: 5px 0;
   text-indent: 0;
-  padding: 0;
+  padding-top: 20px;
   font-family: Courier New, Courier, monospace;
 }
 
@@ -115,4 +115,23 @@ a.reversefootnote {
   color: #555;
   text-wrap: wrap;
   // border: 1px solid rgba(196, 196, 196, 0.39);
+}
+/* Style for the comment button */
+.comment-button {
+  background-color: #00000000;
+  color: rgb(0, 0, 0);
+  padding: 2px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.comment-button:hover {
+  color: rgb(24, 103, 156);
+}
+
+#comments-section {
+  margin-top: 20px;
+  border-top: 2px solid #ccc;
+  padding-top: 20px;
 }

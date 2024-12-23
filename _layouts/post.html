@@ -12,6 +12,7 @@ layout: default
     <span>{{ site.name }}</span>
   </div>
   {% endif %}
+  
   <div class="post-content">
     {{ content }}
   </div>
@@ -29,51 +30,74 @@ layout: default
       {% endif %}
       .
     </div>
+    
     {% if site.name %}
     <div class="post-author">
       {{ site.data.lang[site.language].post_author }}{{ site.name }}
     </div>
     {% endif %}
+    
     <div class="post-categories">
       <span>{{ site.data.lang[site.language].post_categories }}</span>
       {% for category in page.categories %}
-      <a 
-        href="{{ site.baseurl }}/categories#{{ category }}"
-        class="post-category">
+      <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">
         {{ category }}
       </a>
       {% endfor %}
     </div>
+    
     <div class="post-tags">
       <span>{{ site.data.lang[site.language].post_tags }}</span>
       {% for tag in page.tags %}
       <span class="post-tag">{{ tag }}</span>
       {% endfor %}
     </div>
+    
     <div class="post-other">
       {% if page.next %}
       <div>
-        <span>
-          {{ site.data.lang[site.language].post_next }}
-        </span>
-        <a href="{{ site.baseurl }}{{ page.next.url }}">
-          {{ page.next.title }}
-        </a>
+        <span>{{ site.data.lang[site.language].post_next }}</span>
+        <a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a>
       </div>
       {% endif %}
+      
       {% if page.previous %}
       <div>
-        <span>
-          {{ site.data.lang[site.language].post_previous }}
-        </span>
-        <a href="{{ site.baseurl }}{{ page.previous.url }}">
-          {{ page.previous.title }}
-        </a>
+        <span>{{ site.data.lang[site.language].post_previous }}</span>
+        <a href="{{ site.baseurl }}{{ page.previous.url }}">{{ page.previous.title }}</a>
       </div>
       {% endif %}
     </div>
-    {% if site.comments %}
-      {% include comments.html %}
+
+      {% if page.comments %}
+    <!-- Button to load comments -->
+    <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+
+    <!-- Comments Section, hidden by default -->
+    <div id="comments-section" style="display: none;">
+      <script src="https://utteranc.es/client.js"
+        repo="yakimk/wqt"        
+        issue-term="pathname"       
+        label="comment"             
+        theme="github-light"           
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
     {% endif %}
   </div>
 </article>
+
+<script>
+  // JavaScript to toggle the visibility of the comments section
+  document.getElementById("comment-button").addEventListener("click", function() {
+    var commentsSection = document.getElementById("comments-section");
+    if (commentsSection.style.display === "none") {
+      commentsSection.style.display = "block";
+      this.textContent = "Hide Comments";  // Change button text to "Hide Comments"
+    } else {
+      commentsSection.style.display = "none";
+      this.textContent = "Show Comments";  // Change button text back to "Show Comments"
+    }
+  });
+</script>
