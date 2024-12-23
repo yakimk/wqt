@@ -5,11 +5,13 @@
 </div> -->
 
 <div class="container-posts">
+  {% assign total_posts = paginator.posts.size %}
+  {% assign counter = total_posts %}
   {% for post in paginator.posts %}
     {% if post.layout == "post" %}
     <div class="posts-list-item post-item">
       <span class="posts-list-item-number">
-        {{ post.ind }}.
+        {{ counter }}.
       </span>
       <span class="posts-list-item-name">
         <strong>
@@ -20,11 +22,12 @@
         {{ post.date | date: '%Y-%m-%d' }}
       </span>
     </div>
+    {% assign counter = counter | minus: 1 %}
     {% endif %}
     {% if post.layout == "note" %}
     <div class="posts-list-item note-item">
       <span class="posts-list-item-number">
-        {{ post.ind }}.
+        {{ counter }}.
       </span>
       <span class="posts-list-item-name">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
@@ -33,6 +36,7 @@
         {{ post.date | date: '%Y-%m-%d' }}
       </span>
     </div>
+    {% assign counter = counter | minus: 1 %}
     {% endif %}
   {% endfor %}
 

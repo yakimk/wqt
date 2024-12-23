@@ -5,11 +5,13 @@
 </div> -->
 
 <div class="container-posts">
+  {% assign total_posts = site.posts.size %}
+  {% assign counter = total_posts %}
   {% for post in site.posts %}
-    {% if post.layout == "note" %}
+   {% if post.layout == "note" %}
     <div class="posts-list-item note-item">
       <span class="posts-list-item-number">
-        {{ post.ind }}.
+        {{ counter }}.
       </span>
       <span class="posts-list-item-name">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
@@ -19,6 +21,7 @@
       </span>
     </div>
     {% endif %}
+    {% assign counter = counter | minus: 1 %}
   {% endfor %}
 
   {% if paginator.total_pages > 1 %}

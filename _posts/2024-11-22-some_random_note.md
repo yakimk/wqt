@@ -1,69 +1,17 @@
 ---
 layout: note
-title:  "Functional data structures"
-date: 2024-12-22
+title:  "Random note"
+date:   2024-11-22
 last_modified_at: 
 categories: [Functional Programming]
 tags: [Lazy evaluation]
 use_latex: true
 comments: true
-toc: true
+toc : true
 ---
 
 
-## Short intro to functional data structures
-
-Functional data structures are different from  
-
-First let's deal with one of the main pillars of functional data structures **immutability**.
-Here is a simple example to see why it might be a problem.
-
-Consider a simple **BST** (binary search tree). Here is a simple implementation in Haskell
-
-### Some smaller section
-
-#### Smaller
-asdaskdj
-##### SMALLL
-###### SMALLL
-
-
-## Another section
-*This is a sidenote at the bottom of the page in print $\int x dx$.*{:.sidenote .bottom}
-This is the main text. 
-
-### Subsection
-
-asda
-
-```haskell
-data T a = Emp | Node (T a) a (T a) deriving (Show, Eq)
-```
-
-As a first example take a `member` function which checks if a given value is 
-a member of a given tree. Here is the simplest and most ubiquitous implementation of it.
-
-```haskell
-member :: Ord a => T a -> a -> Bool
-member Emp _ = False
-member (Node left val right) el
-    | el < val = member left el
-    | el > val = member right el
-    | otherwise = True
-```
-It does have a few problems though. One of which is that it performs worst case 
-$2d$ comparisons, where $d$ is the height of a given tree. We can do better as following example shows.
-
-```haskell
-betterMember :: Ord a => T a -> a -> Bool
-betterMember = helper Nothing
-    where 
-        helper Nothing Emp x = False
-        helper (Just last) Emp x = x == last
-        helper last (Node left val right) x
-            | x <= val = helper (Just val) left x
-            | otherwise = helper last right x
-```
+## Just random short note
 
 
 Intuitively what we do here is we hold on to out best guess (stored in first argument of `helper` function) till the very end. 

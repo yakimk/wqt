@@ -1,8 +1,16 @@
 ---
 layout: default
 ---
-
+<div class="page-container">
+  <!-- TOC Sidebar -->
+  {% if page.toc == true %}
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    {% include toc.html html=content ordered=true %}
+  </div>
+  {% endif %}
 <article class="container-post">
+  
   <div class="post-title">
     <h1>{{ page.title }}</h1>
   </div>
@@ -12,9 +20,16 @@ layout: default
     <span>{{ site.name }}</span>
   </div>
   {% endif %}
+  
   <div class="post-content">
     {{ content }}
+  </div>  {% if page.toc == true %}
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    {% include toc.html html=content ordered=true %}
   </div>
+  {% endif %}
+
 
   <hr>
 
@@ -29,69 +44,65 @@ layout: default
       {% endif %}
       .
     </div>
+    
     {% if site.name %}
     <div class="post-author">
       {{ site.data.lang[site.language].post_author }}{{ site.name }}
     </div>
     {% endif %}
+    
     <div class="post-categories">
       <span>{{ site.data.lang[site.language].post_categories }}</span>
       {% for category in page.categories %}
-      <a 
-        href="{{ site.baseurl }}/categories#{{ category }}"
-        class="post-category">
+      <a href="{{ site.baseurl }}/categories#{{ category }}" class="post-category">
         {{ category }}
       </a>
       {% endfor %}
     </div>
+    
     <div class="post-tags">
       <span>{{ site.data.lang[site.language].post_tags }}</span>
       {% for tag in page.tags %}
       <span class="post-tag">{{ tag }}</span>
       {% endfor %}
     </div>
+    
     <div class="post-other">
       {% if page.next %}
       <div>
-        <span>
-          {{ site.data.lang[site.language].post_next }}
-        </span>
-        <a href="{{ site.baseurl }}{{ page.next.url }}">
-          {{ page.next.title }}
-        </a>
+        <span>{{ site.data.lang[site.language].post_next }}</span>
+        <a href="{{ site.baseurl }}{{ page.next.url }}">{{ page.next.title }}</a>
       </div>
       {% endif %}
+      
       {% if page.previous %}
       <div>
-        <span>
-          {{ site.data.lang[site.language].post_previous }}
-        </span>
-        <a href="{{ site.baseurl }}{{ page.previous.url }}">
-          {{ page.previous.title }}
-        </a>
+        <span>{{ site.data.lang[site.language].post_previous }}</span>
+        <a href="{{ site.baseurl }}{{ page.previous.url }}">{{ page.previous.title }}</a>
       </div>
       {% endif %}
     </div>
-    {% if page.comments %}
 
-        <!-- Button to load comments -->
-        <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+      {% if page.comments %}
+    <!-- Button to load comments -->
+    <button id="comment-button" class="comment-button float-right center">Show Comments</button>
 
-        <!-- Comments Section, hidden by default -->
-        <div id="comments-section" style="display: none;">
-          <script src="https://utteranc.es/client.js"
-            repo="yakimk/wqt"        
-            issue-term="pathname"       
-            label="comment"             
-            theme="github-light"           
-            crossorigin="anonymous"
-            async>
-          </script>
-        </div>
-    
+    <!-- Comments Section, hidden by default -->
+    <div id="comments-section" style="display: none;">
+      <script src="https://utteranc.es/client.js"
+        repo="yakimk/wqt"        
+        issue-term="pathname"       
+        label="comment"             
+        theme="github-light"           
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
     {% endif %}
   </div>
 </article>
+</div>
+
 <script>
   // JavaScript to toggle the visibility of the comments section
   document.getElementById("comment-button").addEventListener("click", function() {
@@ -104,4 +115,22 @@ layout: default
       this.textContent = "Show Comments";  // Change button text back to "Show Comments"
     }
   });
+
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocSidebar = document.getElementById('toc-sidebar');
+
+  // Add click event for TOC toggle button
+
+  tocToggle.addEventListener('click', () => {
+    tocSidebar.classList.toggle('open');
+  });
+
+  // Add Tab key binding for TOC toggle
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Prevent default tabbing behavior
+      tocSidebar.classList.toggle('open');
+    }
+  });
+
 </script>
