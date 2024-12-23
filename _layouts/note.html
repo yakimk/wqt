@@ -6,7 +6,9 @@ layout: default
   {% if page.toc == true %}
   <div id="toc-sidebar" class="toc-sidebar">
     <button id="toc-toggle" class="toc-toggle">☰</button>
+    <div id = "toc-text">
     {% include toc.html html=content ordered=true %}
+    </div>
   </div>
   {% endif %}
 <article class="container-post">
@@ -21,9 +23,10 @@ layout: default
   </div>
   {% endif %}
   
-  <div class="post-content">
+  <div class="container-post" style="max-width: {{ page.width | default: '800' }}px;">
     {{ content }}
-  </div>  {% if page.toc == true %}
+</div>
+  {% if page.toc == true %}
   <div id="toc-sidebar" class="toc-sidebar">
     <button id="toc-toggle" class="toc-toggle">☰</button>
     {% include toc.html html=content ordered=true %}
@@ -116,21 +119,27 @@ layout: default
     }
   });
 
-  const tocToggle = document.getElementById('toc-toggle');
-  const tocSidebar = document.getElementById('toc-sidebar');
+// Ensure the elements are correctly selected
+const tocToggle = document.getElementById('toc-toggle');
+const tocSidebar = document.getElementById('toc-sidebar');
 
-  // Add click event for TOC toggle button
+// Add a click event listener to toggle the TOC
+tocToggle.addEventListener('click', () => {
+  tocSidebar.classList.toggle('open');
+});
 
-  tocToggle.addEventListener('click', () => {
+// Add Tab key binding for TOC toggle
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Tab') {
+    event.preventDefault(); // Prevent default tabbing behavior
     tocSidebar.classList.toggle('open');
-  });
+  }
+});
 
-  // Add Tab key binding for TOC toggle
-  document.addEventListener('keydown', (event) => {
-    if (event.key === 'Tab') {
-      event.preventDefault(); // Prevent default tabbing behavior
-      tocSidebar.classList.toggle('open');
-    }
-  });
+document.addEventListener('click', (event) => {
+  if (event.target.id === 'toc-toggle') {
+    tocSidebar.classList.toggle('open');
+  }
+});
 
 </script>

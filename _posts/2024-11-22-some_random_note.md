@@ -27,14 +27,12 @@ of comparisons (probably).
 
 Note however that our updated `betterMember` function still copies its whole search path. Effectively our computation could be represented as follows
 
-*This is a sidenote at the bottom of the page in print.*{:.sidenote .bottom}
 
 This is the main text. 
 This is a text with a
 footnote[^Notation].
 
 
-<!-- <span class="sidenote">This is a side note that will appear on the side of the page.</span> -->
 
 DIAGRAM
 

@@ -1,22 +1,29 @@
 .page-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: row; /* This can remain as is if the sidebar and content are side by side */
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically if needed */
 }
 
 #toc-sidebar {
   position: fixed;
-  top: 0;
   left: -300px; /* Initially hidden */
   width: 300px;
   height: 100vh; /* Full viewport height */
+  top: 0;
   overflow-y: auto;
   background-color: #f8f9fa;
   border-right: 1px solid #ddd;
   z-index: 1000;
   transition: transform 0.3s ease, left 0.3s ease;
+
+  /* Add padding to push text down */
+  padding-top: 50px; /* Adjust this value as needed */
 }
+
 
 #toc-sidebar.open {
   left: 0;
@@ -28,20 +35,22 @@
   top: 10px;
   left: 10px;
   z-index: 1100;
-  background-color: #007bff;
-  color: white;
-  border: none;
+  background-color: #cccccc;
+  color: rgb(0, 0, 0);
+  border: 5px;
   padding: 8px;
   cursor: pointer;
   border-radius: 4px;
 }
 
+
 .container-post {
-  margin-left: 50px;
-  padding: 20px;
+  width: 100%;
+  margin: 0 auto; /* Ensures it's horizontally centered if flexbox isn't enough */
+  padding: 15px;
   flex: 1;
-  max-width: 900px;
 }
+
 
 .post-title {
   text-align: center;
@@ -49,7 +58,7 @@
 
 .post-content {
   margin: 0 auto;
-  max-width: 800px;
+  max-width: 1400px;
 }
 
 .post-content img {
@@ -63,10 +72,36 @@
 }
 
 .toc-sidebar li {
+  padding-top: 10px;
   list-style: none;
 }
 
 .toc-sidebar li::before {
   counter-increment: section;
   content: counters(section, ".") " ";
+}
+#toc-toggle {
+  cursor: pointer; /* Makes the button look clickable */
+  display: inline-block; /* Ensure it's not hidden or collapsed */
+  z-index: 1;
+}
+
+/* Style for the Abstract Section Title */
+.abstract-title {
+  text-align: center; /* Center the Abstract title */
+  font-weight: bold;
+  font-size: 1.3em;
+  margin-bottom: 10px; /* Space between the title and the content */
+}
+
+/* Style for the Abstract Section Content */
+.abstract {
+  max-width: 800px; /* Narrower than normal text */
+  // font-family: 'Georgia', serif; /* Different font for Abstract */
+  font-size: 1.0em; /* Slightly larger font size */
+  line-height: 1.4; /* Good readability */
+  margin: 0 auto 30px auto; /* Center it and add spacing below */
+  padding: 10px 20px; /* Add some padding around the text */
+  background-color: #fdfdfd; /* Subtle background for differentiation */
+  border-left: 5px solid #ddd; /* Add a visual indicator on the left */
 }

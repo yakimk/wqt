@@ -8,11 +8,19 @@ tags: [Lazy evaluation]
 use_latex: true
 comments: true
 toc: true
+width: 1200
 ---
 
 
-## Short intro to functional data structures
 
+## Abstract
+{: .abstract-title}
+
+<div class="abstract">
+Functional data structures offer immutable and persistent alternatives to traditional mutable data structures. By leveraging properties like immutability and lazy evaluation, they enable safer and more predictable programming paradigms. However, these properties introduce unique challenges, such as performance overheads and memory management, which require specialized techniques and optimizations to address effectively.
+</div>
+
+## Short intro to functional data structures
 Functional data structures are different from  
 
 First let's deal with one of the main pillars of functional data structures **immutability**.
@@ -29,7 +37,7 @@ asdaskdj
 
 
 ## Another section
-*This is a sidenote at the bottom of the page in print $\int x dx$.*{:.sidenote .bottom}
+
 This is the main text. 
 
 ### Subsection
@@ -64,6 +72,8 @@ betterMember = helper Nothing
             | x <= val = helper (Just val) left x
             | otherwise = helper last right x
 ```
+## This header is skipped in the TOC
+{: .no_toc }
 
 
 Intuitively what we do here is we hold on to out best guess (stored in first argument of `helper` function) till the very end. 
@@ -79,7 +89,6 @@ of comparisons (probably).
 
 Note however that our updated `betterMember` function still copies its whole search path. Effectively our computation could be represented as follows
 
-*This is a sidenote at the bottom of the page in print.*{:.sidenote .bottom}
 
 This is the main text. 
 This is a text with a

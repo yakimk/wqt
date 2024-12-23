@@ -112,6 +112,22 @@
             {% assign minHeader = currLevel %}
         {% endif %}
 
+        {% assign headerText = _workspace[0] | split: '>' | last %}
+        
+        {% comment %}
+            Remove numbering for "Footnotes" or "References"
+        {% endcomment %}
+        {% if headerText contains "Footnotes" or headerText contains "References" %}
+            {% assign skipNumbering = true %}
+            {% capture listModifier %}{% if orderedList %}ol{% else %}ul{% endif %}{% endcapture %}
+        {% else %}
+            {% assign skipNumbering = false %}
+        {% endif %}
+
+        {% if currLevel > 3 %}
+            {% continue %}
+        {% endif %}
+
         {% capture _hAttrToStrip %}{{ _workspace[0] | split: '>' | first }}>{% endcapture %}
         {% assign header = _workspace[0] | replace: _hAttrToStrip, '' %}
 

@@ -16,12 +16,15 @@ permalink: /about/
  - [x] Side notes in posts
  - [x] Add footnotes
  - [ ] "Abstract"
- - [ ] Contents
+ - [x] Contents
  - [ ] Change logo of website
  - [ ] Search on a website
  - [ ] better code snippets
  - [x] add contact me with github form
- - [x] Add numbering of posts -->
+ - [x] Add numbering of posts
+ - [ ] Add numbering to headers
+ - [ ] Remove numbering of Footnote and References headers in TOC
+ -->
 
 
 ## Contact me
