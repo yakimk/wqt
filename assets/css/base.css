@@ -373,6 +373,33 @@ a.reversefootnote {
   /* Add a visual indicator on the left */
 }
 
+.toggle-link {
+  color: #000000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.sliding-note {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out;
+}
+
+.sliding-note-content {
+  padding: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #f8f9fa;
+  border-left: 3px solid #007bff;
+  font-style: italic;
+  box-sizing: border-box;
+  /* Ensures padding and borders are included in max-height */
+}
+
+.sliding-note p {
+  margin: 0;
+}
+
 .highlight > pre,
 pre.highlight {
   line-height: 18px;
