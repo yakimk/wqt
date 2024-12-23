@@ -1,17 +1,25 @@
-<span class="toggle-link" onclick="toggleNote{{ id }}">{{ link_text }}</span>
+<div>Debug ID: {{ id | default: "No ID passed" }}</div>
+<div>Debug Link Text: {{ link_text | default: "No Link Text passed" }}</div>
+<div>Debug Content: {{ cont | default: "No Content passed" }}</div>
+
+<span class="toggle-link" onclick="toggleNote('{{ id }}')">
+  {{ link_text | default: "Click here to reveal more details" }}
+</span>
 <div id="sliding-note-{{ id }}" class="sliding-note">
   <div class="sliding-note-content">
-    {{ content | markdownify }}
+    {{ cont | default: "Default text" }}
   </div>
 </div>
 
 <script>
-  function toggleNote{{ id }}() {
-    const note = document.getElementById('sliding-note-{{ id }}');
-    if (note.style.maxHeight) {
-      note.style.maxHeight = null;
-    } else {
-      note.style.maxHeight = note.scrollHeight + "px";
+  function toggleNote(id) {
+    const note = document.getElementById(`sliding-note-${id}`);
+    if (note) {
+      if (note.style.maxHeight && note.style.maxHeight !== "0px") {
+        note.style.maxHeight = "0px";
+      } else {
+        note.style.maxHeight = note.scrollHeight + "px";
+      }
     }
   }
 </script>
