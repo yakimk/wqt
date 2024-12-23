@@ -25,10 +25,10 @@ language: en
 
 analytics: # the Google Analytics property ID, e.g. UA-XXXXX-Y
 
-comments: false # enable comments
+comments: true # enable comments
 disqus: # disqus account
 
-mathjax: true # Math support
+mathjax: false # Math support
 diagram: true # Diagrams support
 
 paginate: 25
@@ -69,5 +69,3 @@ defaults:
       type: "pages"
     values:
       permalink: /:path/:basename
-
-theme : minima

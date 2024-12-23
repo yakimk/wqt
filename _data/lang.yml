@@ -1,6 +1,8 @@
 en:
   menu_index: 'Index'
+  menu_posts: 'Posts'
   menu_category: 'Categories'
+  menu_notes: 'Notes'
   menu_about: 'About'
   paginator_previous: 'Previous'
   paginator_pages: 'Page: '

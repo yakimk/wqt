@@ -1,6 +1,12 @@
 - default: menu_index
   url: ''
 
+- default: menu_posts
+  url: 'posts'
+
+- default: menu_notes
+  url: 'notes'
+
 - default: menu_category
   url: 'categories'
 

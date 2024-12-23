@@ -104,3 +104,15 @@ th {
 a.reversefootnote {
   display: none;
 }
+
+
+.sidenote {
+  display: inline-block;
+  position:absolute;
+  margin-left: 900px;
+  width: 15%;
+  font-size: 0.9em;
+  color: #555;
+  text-wrap: wrap;
+  // border: 1px solid rgba(196, 196, 196, 0.39);
+}

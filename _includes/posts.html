@@ -1,13 +1,34 @@
+<!-- <div class="filters">
+  <button class="filter-button" data-filter="all">All</button>
+  <button class="filter-button" data-filter="posts">Posts</button>
+  <button class="filter-button" data-filter="notes">Notes</button>
+</div> -->
+
 <div class="container-posts">
   {% for post in paginator.posts %}
-  <div class="posts-list-item">
-    <span class="posts-list-item-name float-left">
+    {% if post.layout == "post" %}
+    <div class="posts-list-item post-item">
+      <span class="posts-list-item-name float-left">
+        <strong>
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
-    </span>
-    <span class="posts-list-item-date float-right">
-      {{ post.date | date: '%Y-%m-%d' }}
-    </span>
-  </div>
+        </strong>
+      </span>
+      <span class="posts-list-item-date float-right">
+        {{ post.date | date: '%Y-%m-%d' }}
+      </span>
+    </div>
+    {% endif %}
+    {% if post.layout == "note" %}
+    <div class="posts-list-item note-item">
+      <span class="posts-list-item-name float-left">
+        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+      </span>
+      <span class="posts-list-item-date float-right">
+        {{ post.date | date: '%Y-%m-%d' }}
+      </span>
+    </div>
+    {% endif %}
+
   {% endfor %}
   {% if paginator.total_pages > 1 %}
   <div class="list-pagination">
