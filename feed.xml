@@ -1,10 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://yakimk.github.io/wqt//wqt/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yakimk.github.io/wqt//wqt/" rel="alternate" type="text/html" /><updated>2024-12-23T20:35:49+00:00</updated><id>https://yakimk.github.io/wqt//wqt/feed.xml</id><title type="html">wqt</title><subtitle>Welder Qualification Test.</subtitle><entry><title type="html">Lazy evaluation and amortized cost analysis</title><link href="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort" rel="alternate" type="text/html" title="Lazy evaluation and amortized cost analysis" /><published>2024-12-23T00:00:00+00:00</published><updated>2024-12-23T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort"><![CDATA[<h3 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h3>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.10.0">Jekyll</generator><link href="https://yakimk.github.io/wqt//wqt/feed.xml" rel="self" type="application/atom+xml" /><link href="https://yakimk.github.io/wqt//wqt/" rel="alternate" type="text/html" /><updated>2024-12-23T22:20:31+00:00</updated><id>https://yakimk.github.io/wqt//wqt/feed.xml</id><title type="html">wqt</title><subtitle>Welder Qualification Test.</subtitle><entry><title type="html">Lazy evaluation and amortized cost analysis</title><link href="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort" rel="alternate" type="text/html" title="Lazy evaluation and amortized cost analysis" /><published>2024-12-23T00:00:00+00:00</published><updated>2024-12-23T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort"><![CDATA[<h3 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h3>
 
 <p>References = [
   “Okasaki, Purely functional data structures”,
   “What’s new in purely functional data structures?” : https://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki,
-]</p>]]></content><author><name></name></author><category term="Functional Programming" /><category term="Lazy evaluation" /><summary type="html"><![CDATA[Short intro to functional data structures]]></summary></entry><entry><title type="html">Functional data structures</title><link href="https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures" rel="alternate" type="text/html" title="Functional data structures" /><published>2024-12-22T00:00:00+00:00</published><updated>2024-12-22T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures"><![CDATA[<h2 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h2>
+]</p>]]></content><author><name></name></author><category term="Functional Programming" /><category term="Lazy evaluation" /><summary type="html"><![CDATA[Short intro to functional data structures]]></summary></entry><entry><title type="html">Functional data structures</title><link href="https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures" rel="alternate" type="text/html" title="Functional data structures" /><published>2024-12-22T00:00:00+00:00</published><updated>2024-12-22T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/12/22/functional-data-structures"><![CDATA[<h2 class="abstract-title" id="abstract">Abstract</h2>
 
+<div class="abstract">
+Functional data structures offer immutable and persistent alternatives to traditional mutable data structures. By leveraging properties like immutability and lazy evaluation, they enable safer and more predictable programming paradigms. However, these properties introduce unique challenges, such as performance overheads and memory management, which require specialized techniques and optimizations to address effectively.
+</div>
+
+<h2 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h2>
 <p>Functional data structures are different from</p>
 
 <p>First let’s deal with one of the main pillars of functional data structures <strong>immutability</strong>.
@@ -20,8 +25,8 @@ Here is a simple example to see why it might be a problem.</p>
 <h6 id="smalll-1">SMALLL</h6>
 
 <h2 id="another-section">Another section</h2>
-<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print $\int x dx$.</em>
-This is the main text.</p>
+
+<p>This is the main text.</p>
 
 <h3 id="subsection">Subsection</h3>
 
@@ -52,6 +57,7 @@ $2d$ comparisons, where $d$ is the height of a given tree. We can do better as f
             <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">val</span> <span class="o">=</span> <span class="n">helper</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">val</span><span class="p">)</span> <span class="n">left</span> <span class="n">x</span>
             <span class="o">|</span> <span class="n">otherwise</span> <span class="o">=</span> <span class="n">helper</span> <span class="n">last</span> <span class="n">right</span> <span class="n">x</span>
 </code></pre></div></div>
+<h2 class="no_toc" id="this-header-is-skipped-in-the-toc">This header is skipped in the TOC</h2>
 
 <p>Intuitively what we do here is we hold on to out best guess (stored in first argument of <code class="language-plaintext highlighter-rouge">helper</code> function) till the very end. 
 When we reach the end of our computation we check if our best guess was “good enough” (if it is equal to the value we were looking for).</p>
@@ -65,8 +71,6 @@ This way it should be possible to reach some asymptotically optimal number
 of comparisons (probably).</p>
 
 <p>Note however that our updated <code class="language-plaintext highlighter-rouge">betterMember</code> function still copies its whole search path. Effectively our computation could be represented as follows</p>
-
-<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print.</em></p>
 
 <p>This is the main text. 
 This is a text with a
@@ -97,7 +101,7 @@ Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.<
       <p>And here is the definition. <a href="#fnref:Notation" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
     </li>
   </ol>
-</div>]]></content><author><name></name></author><category term="Functional Programming" /><category term="Lazy evaluation" /><summary type="html"><![CDATA[Short intro to functional data structures]]></summary></entry><entry><title type="html">Random note</title><link href="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note" rel="alternate" type="text/html" title="Random note" /><published>2024-11-22T00:00:00+00:00</published><updated>2024-11-22T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note"><![CDATA[<h2 id="just-random-short-note">Just random short note</h2>
+</div>]]></content><author><name></name></author><category term="Functional Programming" /><category term="Lazy evaluation" /><summary type="html"><![CDATA[Abstract]]></summary></entry><entry><title type="html">Random note</title><link href="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note" rel="alternate" type="text/html" title="Random note" /><published>2024-11-22T00:00:00+00:00</published><updated>2024-11-22T00:00:00+00:00</updated><id>https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note</id><content type="html" xml:base="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note"><![CDATA[<h2 id="just-random-short-note">Just random short note</h2>
 
 <p>Intuitively what we do here is we hold on to out best guess (stored in first argument of <code class="language-plaintext highlighter-rouge">helper</code> function) till the very end. 
 When we reach the end of our computation we check if our best guess was “good enough” (if it is equal to the value we were looking for).</p>
@@ -112,13 +116,9 @@ of comparisons (probably).</p>
 
 <p>Note however that our updated <code class="language-plaintext highlighter-rouge">betterMember</code> function still copies its whole search path. Effectively our computation could be represented as follows</p>
 
-<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print.</em></p>
-
 <p>This is the main text. 
 This is a text with a
 footnote<sup id="fnref:Notation" role="doc-noteref"><a href="#fn:Notation" class="footnote" rel="footnote">1</a></sup>.</p>
-
-<!-- <span class="sidenote">This is a side note that will appear on the side of the page.</span> -->
 
 <p>DIAGRAM</p>
 
