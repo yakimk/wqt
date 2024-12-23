@@ -17,9 +17,7 @@ permalink: /info/
  - [ ] "Abstract"
  - [ ] Contents
  - [ ] Change logo of website
- - [ ] Have some dynamic annotations for parts of posts, that would be stored as some kind of ideas with tags
- - [ ] Optionally (add some kind of button) for turning on coloring based on importance of this part of a post for the whole context.
  - [ ] Search on a website
- - [ ] Related posts section for posts and notes
  - [ ] better code snippets
  - [ ] add contact me with github form
+ - [x] Add numbering of posts
