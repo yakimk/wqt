@@ -5,12 +5,16 @@
 </div> -->
 
 <div class="container-posts">
+  {% assign counter = 1 %}
   {% for post in paginator.posts %}
     {% if post.layout == "post" %}
     <div class="posts-list-item post-item">
-      <span class="posts-list-item-name float-left">
+      <span class="posts-list-item-number">
+        {{ counter }}.
+      </span>
+      <span class="posts-list-item-name">
         <strong>
-        <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
         </strong>
       </span>
       <span class="posts-list-item-date float-right">
@@ -20,7 +24,10 @@
     {% endif %}
     {% if post.layout == "note" %}
     <div class="posts-list-item note-item">
-      <span class="posts-list-item-name float-left">
+      <span class="posts-list-item-number">
+        {{ counter }}.
+      </span>
+      <span class="posts-list-item-name">
         <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
       </span>
       <span class="posts-list-item-date float-right">
@@ -28,8 +35,9 @@
       </span>
     </div>
     {% endif %}
-
+    {% assign counter = counter | plus: 1 %}
   {% endfor %}
+
   {% if paginator.total_pages > 1 %}
   <div class="list-pagination">
     {% if paginator.previous_page %}
