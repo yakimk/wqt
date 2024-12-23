@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Functional data structures | wqt</title>
+<meta name="generator" content="Jekyll v3.10.0" />
+<meta property="og:title" content="Functional data structures" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Short intro to functional data structures" />
+<meta property="og:description" content="Short intro to functional data structures" />
+<link rel="canonical" href="http://localhost:4000/wqt/2024/12/22/functional-data-structures" />
+<meta property="og:url" content="http://localhost:4000/wqt/2024/12/22/functional-data-structures" />
+<meta property="og:site_name" content="wqt" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-12-22T00:00:00+01:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Functional data structures" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-12-22T00:00:00+01:00","datePublished":"2024-12-22T00:00:00+01:00","description":"Short intro to functional data structures","headline":"Functional data structures","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/wqt/2024/12/22/functional-data-structures"},"url":"http://localhost:4000/wqt/2024/12/22/functional-data-structures"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+<meta
+  name="keywords"
+  content="Lazy evaluation" />
+
+<link rel="shortcut icon" href="/wqt/favicon.ico" />
+<link rel="apple-touch-icon" href="/wqt/favicon.ico" />
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="wqt - Welder Qualification Test."
+  href="/wqt/feed.xml" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/wqt/assets/css/base.css" />
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="/wqt/assets/css/highlight.css" />
+
+<!--[if lt IE 9]>
+  <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+<!--  -->
+
+<!-- 
+<script src="/wqt/assets/scripts/jekyllpaper.js" async></script>
+<script
+  src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"
+  onload="javascript:loadMermaid();"
+  async>
+</script>
+ -->
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" integrity="sha384-7zkQWkzuo3B5mTepMUcHkMB5jZaolc2xDwL6VFqjFALcbeS9Ggm/Yr2r3Dy4lfFg" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js" integrity="sha384-43gviWU0YVjaDtb/GhzOouOXtZMP/7XUzwPTstBeZFe/+rCMvRwr4yROQP43s0Xk" crossorigin="anonymous"></script>
+<style>
+/* .katex {
+  font-family: monospace; 
+  font-size: 1.1em;
+  font-weight: 1;
+  word-spacing: 1.5;
+} */
+/* .katex-display {
+  font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
+  font-size: 1.1em
+} */
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      renderMathInElement(document.body, {
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            // {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        throwOnError : false
+      });
+  });
+</script>
+
+  </head>
+  </head>
+  <body>
+    <div class="container-wrapper">
+      <header class="container-header">
+        <div class="header-info">
+  <span class="header-info-name">wqt</span>
+  <span class="header-info-desc">Welder Qualification Test.</span>
+</div>
+<nav class="header-nav">
+  <ul class="header-main-nav">
+    
+    <li class="header-main-nav-item">
+      <a href="/wqt/" class = "header-a">
+        
+          Index
+        
+      </a>
+    </li>
+    
+    <li class="header-main-nav-item">
+      <a href="/wqt/posts" class = "header-a">
+        
+          Posts
+        
+      </a>
+    </li>
+    
+    <li class="header-main-nav-item">
+      <a href="/wqt/notes" class = "header-a">
+        
+          Notes
+        
+      </a>
+    </li>
+    
+    <li class="header-main-nav-item">
+      <a href="/wqt/categories" class = "header-a">
+        
+          Categories
+        
+      </a>
+    </li>
+    
+    <li class="header-main-nav-item">
+      <a href="/wqt/about" class = "header-a">
+        
+          About
+        
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+
+      </header>
+      <main class="container-main">
+        <div class="page-container">
+  <!-- TOC Sidebar -->
+  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#short-intro-to-functional-data-structures">Short intro to functional data structures</a><ol><li><a href="#some-smaller-section">Some smaller section</a><ol><li><a href="#smaller">Smaller</a><ol><li><a href="#smalll">SMALLL</a><ol><li><a href="#smalll-1">SMALLL</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#another-section">Another section</a><ol><li><a href="#subsection">Subsection</a></li></ol></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
+  </div>
+  
+<article class="container-post">
+  
+  <div class="post-title">
+    <h1>Functional data structures</h1>
+  </div>
+
+  
+  
+  <div class="post-content">
+    <h2 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h2>
+
+<p>Functional data structures are different from</p>
+
+<p>First let’s deal with one of the main pillars of functional data structures <strong>immutability</strong>.
+Here is a simple example to see why it might be a problem.</p>
+
+<p>Consider a simple <strong>BST</strong> (binary search tree). Here is a simple implementation in Haskell</p>
+
+<h3 id="some-smaller-section">Some smaller section</h3>
+
+<h4 id="smaller">Smaller</h4>
+<p>asdaskdj</p>
+<h5 id="smalll">SMALLL</h5>
+<h6 id="smalll-1">SMALLL</h6>
+
+<h2 id="another-section">Another section</h2>
+<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print $\int x dx$.</em>
+This is the main text.</p>
+
+<h3 id="subsection">Subsection</h3>
+
+<p>asda</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">T</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Emp</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">T</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">T</span> <span class="n">a</span><span class="p">)</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">,</span> <span class="kt">Eq</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>As a first example take a <code class="language-plaintext highlighter-rouge">member</code> function which checks if a given value is 
+a member of a given tree. Here is the simplest and most ubiquitous implementation of it.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">member</span> <span class="o">::</span> <span class="kt">Ord</span> <span class="n">a</span> <span class="o">=&gt;</span> <span class="kt">T</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">member</span> <span class="kt">Emp</span> <span class="kr">_</span> <span class="o">=</span> <span class="kt">False</span>
+<span class="n">member</span> <span class="p">(</span><span class="kt">Node</span> <span class="n">left</span> <span class="n">val</span> <span class="n">right</span><span class="p">)</span> <span class="n">el</span>
+    <span class="o">|</span> <span class="n">el</span> <span class="o">&lt;</span> <span class="n">val</span> <span class="o">=</span> <span class="n">member</span> <span class="n">left</span> <span class="n">el</span>
+    <span class="o">|</span> <span class="n">el</span> <span class="o">&gt;</span> <span class="n">val</span> <span class="o">=</span> <span class="n">member</span> <span class="n">right</span> <span class="n">el</span>
+    <span class="o">|</span> <span class="n">otherwise</span> <span class="o">=</span> <span class="kt">True</span>
+</code></pre></div></div>
+<p>It does have a few problems though. One of which is that it performs worst case 
+$2d$ comparisons, where $d$ is the height of a given tree. We can do better as following example shows.</p>
+
+<div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">betterMember</span> <span class="o">::</span> <span class="kt">Ord</span> <span class="n">a</span> <span class="o">=&gt;</span> <span class="kt">T</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="n">a</span> <span class="o">-&gt;</span> <span class="kt">Bool</span>
+<span class="n">betterMember</span> <span class="o">=</span> <span class="n">helper</span> <span class="kt">Nothing</span>
+    <span class="kr">where</span> 
+        <span class="n">helper</span> <span class="kt">Nothing</span> <span class="kt">Emp</span> <span class="n">x</span> <span class="o">=</span> <span class="kt">False</span>
+        <span class="n">helper</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">last</span><span class="p">)</span> <span class="kt">Emp</span> <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">==</span> <span class="n">last</span>
+        <span class="n">helper</span> <span class="n">last</span> <span class="p">(</span><span class="kt">Node</span> <span class="n">left</span> <span class="n">val</span> <span class="n">right</span><span class="p">)</span> <span class="n">x</span>
+            <span class="o">|</span> <span class="n">x</span> <span class="o">&lt;=</span> <span class="n">val</span> <span class="o">=</span> <span class="n">helper</span> <span class="p">(</span><span class="kt">Just</span> <span class="n">val</span><span class="p">)</span> <span class="n">left</span> <span class="n">x</span>
+            <span class="o">|</span> <span class="n">otherwise</span> <span class="o">=</span> <span class="n">helper</span> <span class="n">last</span> <span class="n">right</span> <span class="n">x</span>
+</code></pre></div></div>
+
+<p>Intuitively what we do here is we hold on to out best guess (stored in first argument of <code class="language-plaintext highlighter-rouge">helper</code> function) till the very end. 
+When we reach the end of our computation we check if our best guess was “good enough” (if it is equal to the value we were looking for).</p>
+
+<p>Note that although this approach does decrease the worst case number of comparisons from $2d$ to $d + 1$, it also ensures that we cannot get any faster, meaning we have to traverse the tree till the end before checking for equality with our “best guess”.</p>
+
+<p>One possible solution would be to use some sort of ‘heuristic’ and by that I mean some type of exponential backoff (basically distributing checks of equality with “best guess” sparser and sparser as we progress in computation) or something similar. It 
+probably would be most sensible to parametrize the frequency of checking for equality 
+with our “best guess” by $d$ (especially when dealing with balanced trees). 
+This way it should be possible to reach some asymptotically optimal number 
+of comparisons (probably).</p>
+
+<p>Note however that our updated <code class="language-plaintext highlighter-rouge">betterMember</code> function still copies its whole search path. Effectively our computation could be represented as follows</p>
+
+<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print.</em></p>
+
+<p>This is the main text. 
+This is a text with a
+footnote<sup id="fnref:Notation" role="doc-noteref"><a href="#fn:Notation" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<!-- <span class="sidenote">This is a side note that will appear on the side of the page.</span> -->
+
+<p>DIAGRAM</p>
+
+<p><a href="#Oka98">[Oka98]</a></p>
+<blockquote>
+  <p><strong><em>NOTE:</em></strong>  The note content.
+Now we will try to deal with that problem.</p>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<p><a id="Oka98" name="Okasaki98">[Oka98]</a>
+Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.</p>
+
+<p><a id="2">[2]</a>
+<a href="https://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki">“What’s new in purely functional data structures?”</a></p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:Notation" role="doc-endnote">
+      <p>And here is the definition. <a href="#fnref:Notation" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#short-intro-to-functional-data-structures">Short intro to functional data structures</a><ol><li><a href="#some-smaller-section">Some smaller section</a><ol><li><a href="#smaller">Smaller</a><ol><li><a href="#smalll">SMALLL</a><ol><li><a href="#smalll-1">SMALLL</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#another-section">Another section</a><ol><li><a href="#subsection">Subsection</a></li></ol></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
+  </div>
+  
+
+
+  <hr>
+
+  <div class="post-info">
+    <div class="post-date">
+      Written on 
+      2024-12-22
+      
+      .
+    </div>
+    
+    
+    
+    <div class="post-categories">
+      <span>Categories: </span>
+      
+      <a href="/wqt/categories#Functional Programming" class="post-category">
+        Functional Programming
+      </a>
+      
+    </div>
+    
+    <div class="post-tags">
+      <span>Tags: </span>
+      
+      <span class="post-tag">Lazy evaluation</span>
+      
+    </div>
+    
+    <div class="post-other">
+      
+      <div>
+        <span>Next: </span>
+        <a href="/wqt/2024/12/23/lazy_amort">Lazy evaluation and amortized cost analysis</a>
+      </div>
+      
+      
+      
+      <div>
+        <span>Previous: </span>
+        <a href="/wqt/2024/11/22/some_random_note">Random note</a>
+      </div>
+      
+    </div>
+
+      
+    <!-- Button to load comments -->
+    <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+
+    <!-- Comments Section, hidden by default -->
+    <div id="comments-section" style="display: none;">
+      <script src="https://utteranc.es/client.js"
+        repo="yakimk/wqt"        
+        issue-term="pathname"       
+        label="comment"             
+        theme="github-light"           
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
+    
+  </div>
+</article>
+</div>
+
+<script>
+  // JavaScript to toggle the visibility of the comments section
+  document.getElementById("comment-button").addEventListener("click", function() {
+    var commentsSection = document.getElementById("comments-section");
+    if (commentsSection.style.display === "none") {
+      commentsSection.style.display = "block";
+      this.textContent = "Hide Comments";  // Change button text to "Hide Comments"
+    } else {
+      commentsSection.style.display = "none";
+      this.textContent = "Show Comments";  // Change button text back to "Show Comments"
+    }
+  });
+
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocSidebar = document.getElementById('toc-sidebar');
+
+  // Add click event for TOC toggle button
+
+  tocToggle.addEventListener('click', () => {
+    tocSidebar.classList.toggle('open');
+  });
+
+  // Add Tab key binding for TOC toggle
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Prevent default tabbing behavior
+      tocSidebar.classList.toggle('open');
+    }
+  });
+
+</script>
+      </main>
+      <footer class="container-footer">
+        <div class="footer-copyright">
+  <span class="footer-copyright-text float-left">
+    Copyright &copy; 2024. yakimk.github.io/wqt/.
+  </span>
+  <span class="footer-copyright-text float-right">
+  </span>
+</div>
+
+      </footer>
+    </div>
+  </body>
+</html>
