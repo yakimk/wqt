@@ -5,21 +5,21 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>Lazy evaluation and amortized cost analysis | wqt</title>
+<title>Random note | wqt</title>
 <meta name="generator" content="Jekyll v3.10.0" />
-<meta property="og:title" content="Lazy evaluation and amortized cost analysis" />
+<meta property="og:title" content="Random note" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Short intro to functional data structures" />
-<meta property="og:description" content="Short intro to functional data structures" />
-<link rel="canonical" href="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort" />
-<meta property="og:url" content="https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort" />
+<meta name="description" content="Just random short note" />
+<meta property="og:description" content="Just random short note" />
+<link rel="canonical" href="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note" />
+<meta property="og:url" content="https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note" />
 <meta property="og:site_name" content="wqt" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2024-12-23T00:00:00+00:00" />
+<meta property="article:published_time" content="2024-11-22T00:00:00+00:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Lazy evaluation and amortized cost analysis" />
+<meta property="twitter:title" content="Random note" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-12-23T00:00:00+00:00","datePublished":"2024-12-23T00:00:00+00:00","description":"Short intro to functional data structures","headline":"Lazy evaluation and amortized cost analysis","mainEntityOfPage":{"@type":"WebPage","@id":"https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort"},"url":"https://yakimk.github.io/wqt//wqt/2024/12/23/lazy_amort"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","dateModified":"2024-11-22T00:00:00+00:00","datePublished":"2024-11-22T00:00:00+00:00","description":"Just random short note","headline":"Random note","mainEntityOfPage":{"@type":"WebPage","@id":"https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note"},"url":"https://yakimk.github.io/wqt//wqt/2024/11/22/some_random_note"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -146,30 +146,85 @@
 
       </header>
       <main class="container-main">
-        <article class="container-post">
+        <div class="page-container">
+  <!-- TOC Sidebar -->
+  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#just-random-short-note">Just random short note</a></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
+  </div>
+  
+<article class="container-post">
+  
   <div class="post-title">
-    <h1>Lazy evaluation and amortized cost analysis</h1>
+    <h1>Random note</h1>
   </div>
 
   
   
   <div class="post-content">
-    <ul><li><a href="#short-intro-to-functional-data-structures">Short intro to functional data structures</a></li></ul>
-    <h3 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h3>
+    <h2 id="just-random-short-note">Just random short note</h2>
 
-<p>References = [
-  “Okasaki, Purely functional data structures”,
-  “What’s new in purely functional data structures?” : https://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki,
-]</p>
+<p>Intuitively what we do here is we hold on to out best guess (stored in first argument of <code class="language-plaintext highlighter-rouge">helper</code> function) till the very end. 
+When we reach the end of our computation we check if our best guess was “good enough” (if it is equal to the value we were looking for).</p>
 
+<p>Note that although this approach does decrease the worst case number of comparisons from $2d$ to $d + 1$, it also ensures that we cannot get any faster, meaning we have to traverse the tree till the end before checking for equality with our “best guess”.</p>
+
+<p>One possible solution would be to use some sort of ‘heuristic’ and by that I mean some type of exponential backoff (basically distributing checks of equality with “best guess” sparser and sparser as we progress in computation) or something similar. It 
+probably would be most sensible to parametrize the frequency of checking for equality 
+with our “best guess” by $d$ (especially when dealing with balanced trees). 
+This way it should be possible to reach some asymptotically optimal number 
+of comparisons (probably).</p>
+
+<p>Note however that our updated <code class="language-plaintext highlighter-rouge">betterMember</code> function still copies its whole search path. Effectively our computation could be represented as follows</p>
+
+<p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print.</em></p>
+
+<p>This is the main text. 
+This is a text with a
+footnote<sup id="fnref:Notation" role="doc-noteref"><a href="#fn:Notation" class="footnote" rel="footnote">1</a></sup>.</p>
+
+<!-- <span class="sidenote">This is a side note that will appear on the side of the page.</span> -->
+
+<p>DIAGRAM</p>
+
+<p><a href="#Oka98">[Oka98]</a></p>
+<blockquote>
+  <p><strong><em>NOTE:</em></strong>  The note content.
+Now we will try to deal with that problem.</p>
+</blockquote>
+
+<h2 id="references">References</h2>
+
+<p><a id="Oka98" name="Okasaki98">[Oka98]</a>
+Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.</p>
+
+<p><a id="2">[2]</a>
+<a href="https://cstheory.stackexchange.com/questions/1539/whats-new-in-purely-functional-data-structures-since-okasaki">“What’s new in purely functional data structures?”</a></p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:Notation" role="doc-endnote">
+      <p>And here is the definition. <a href="#fnref:Notation" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#just-random-short-note">Just random short note</a></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
   </div>
+  
+
 
   <hr>
 
   <div class="post-info">
     <div class="post-date">
       Written on 
-      2024-12-23
+      2024-11-22
       
       .
     </div>
@@ -194,12 +249,12 @@
     
     <div class="post-other">
       
-      
-      
       <div>
-        <span>Previous: </span>
+        <span>Next: </span>
         <a href="/wqt/2024/12/22/functional-data-structures">Functional data structures</a>
       </div>
+      
+      
       
     </div>
 
@@ -221,6 +276,7 @@
     
   </div>
 </article>
+</div>
 
 <script>
   // JavaScript to toggle the visibility of the comments section
@@ -234,8 +290,25 @@
       this.textContent = "Show Comments";  // Change button text back to "Show Comments"
     }
   });
-</script>
 
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocSidebar = document.getElementById('toc-sidebar');
+
+  // Add click event for TOC toggle button
+
+  tocToggle.addEventListener('click', () => {
+    tocSidebar.classList.toggle('open');
+  });
+
+  // Add Tab key binding for TOC toggle
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Prevent default tabbing behavior
+      tocSidebar.classList.toggle('open');
+    }
+  });
+
+</script>
       </main>
       <footer class="container-footer">
         <div class="footer-copyright">

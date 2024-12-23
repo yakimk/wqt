@@ -146,14 +146,24 @@
 
       </header>
       <main class="container-main">
-        <article class="container-post">
+        <div class="page-container">
+  <!-- TOC Sidebar -->
+  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#short-intro-to-functional-data-structures">Short intro to functional data structures</a><ol><li><a href="#some-smaller-section">Some smaller section</a><ol><li><a href="#smaller">Smaller</a><ol><li><a href="#smalll">SMALLL</a><ol><li><a href="#smalll-1">SMALLL</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#another-section">Another section</a><ol><li><a href="#subsection">Subsection</a></li></ol></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
+  </div>
+  
+<article class="container-post">
+  
   <div class="post-title">
     <h1>Functional data structures</h1>
   </div>
 
   
+  
   <div class="post-content">
-    <h3 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h3>
+    <h2 id="short-intro-to-functional-data-structures">Short intro to functional data structures</h2>
 
 <p>Functional data structures are different from</p>
 
@@ -162,8 +172,20 @@ Here is a simple example to see why it might be a problem.</p>
 
 <p>Consider a simple <strong>BST</strong> (binary search tree). Here is a simple implementation in Haskell</p>
 
+<h3 id="some-smaller-section">Some smaller section</h3>
+
+<h4 id="smaller">Smaller</h4>
+<p>asdaskdj</p>
+<h5 id="smalll">SMALLL</h5>
+<h6 id="smalll-1">SMALLL</h6>
+
+<h2 id="another-section">Another section</h2>
 <p><em class="sidenote bottom">This is a sidenote at the bottom of the page in print $\int x dx$.</em>
 This is the main text.</p>
+
+<h3 id="subsection">Subsection</h3>
+
+<p>asda</p>
 
 <div class="language-haskell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kr">data</span> <span class="kt">T</span> <span class="n">a</span> <span class="o">=</span> <span class="kt">Emp</span> <span class="o">|</span> <span class="kt">Node</span> <span class="p">(</span><span class="kt">T</span> <span class="n">a</span><span class="p">)</span> <span class="n">a</span> <span class="p">(</span><span class="kt">T</span> <span class="n">a</span><span class="p">)</span> <span class="kr">deriving</span> <span class="p">(</span><span class="kt">Show</span><span class="p">,</span> <span class="kt">Eq</span><span class="p">)</span>
 </code></pre></div></div>
@@ -237,7 +259,13 @@ Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.<
   </ol>
 </div>
 
+  </div>  
+  <div id="toc-sidebar" class="toc-sidebar">
+    <button id="toc-toggle" class="toc-toggle">☰</button>
+    <ol><li><a href="#short-intro-to-functional-data-structures">Short intro to functional data structures</a><ol><li><a href="#some-smaller-section">Some smaller section</a><ol><li><a href="#smaller">Smaller</a><ol><li><a href="#smalll">SMALLL</a><ol><li><a href="#smalll-1">SMALLL</a></li></ol></li></ol></li></ol></li></ol></li><li><a href="#another-section">Another section</a><ol><li><a href="#subsection">Subsection</a></li></ol></li><li><a href="#references">References</a></li><li><a href="#footnotes">Footnotes</a></li></ol>
   </div>
+  
+
 
   <hr>
 
@@ -249,55 +277,60 @@ Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.<
       .
     </div>
     
+    
+    
     <div class="post-categories">
       <span>Categories: </span>
       
-      <a 
-        href="/wqt/categories#Functional Programming"
-        class="post-category">
+      <a href="/wqt/categories#Functional Programming" class="post-category">
         Functional Programming
       </a>
       
     </div>
+    
     <div class="post-tags">
       <span>Tags: </span>
       
       <span class="post-tag">Lazy evaluation</span>
       
     </div>
+    
     <div class="post-other">
       
       <div>
-        <span>
-          Next: 
-        </span>
-        <a href="/wqt/2024/12/23/lazy_amort">
-          Lazy evaluation and amortized cost analysis
-        </a>
+        <span>Next: </span>
+        <a href="/wqt/2024/12/23/lazy_amort">Lazy evaluation and amortized cost analysis</a>
       </div>
       
       
+      
+      <div>
+        <span>Previous: </span>
+        <a href="/wqt/2024/11/22/some_random_note">Random note</a>
+      </div>
+      
     </div>
-    
 
-        <!-- Button to load comments -->
-        <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+      
+    <!-- Button to load comments -->
+    <button id="comment-button" class="comment-button float-right center">Show Comments</button>
 
-        <!-- Comments Section, hidden by default -->
-        <div id="comments-section" style="display: none;">
-          <script src="https://utteranc.es/client.js"
-            repo="yakimk/wqt"        
-            issue-term="pathname"       
-            label="comment"             
-            theme="github-light"           
-            crossorigin="anonymous"
-            async>
-          </script>
-        </div>
-    
+    <!-- Comments Section, hidden by default -->
+    <div id="comments-section" style="display: none;">
+      <script src="https://utteranc.es/client.js"
+        repo="yakimk/wqt"        
+        issue-term="pathname"       
+        label="comment"             
+        theme="github-light"           
+        crossorigin="anonymous"
+        async>
+      </script>
+    </div>
     
   </div>
 </article>
+</div>
+
 <script>
   // JavaScript to toggle the visibility of the comments section
   document.getElementById("comment-button").addEventListener("click", function() {
@@ -310,8 +343,25 @@ Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.<
       this.textContent = "Show Comments";  // Change button text back to "Show Comments"
     }
   });
-</script>
 
+  const tocToggle = document.getElementById('toc-toggle');
+  const tocSidebar = document.getElementById('toc-sidebar');
+
+  // Add click event for TOC toggle button
+
+  tocToggle.addEventListener('click', () => {
+    tocSidebar.classList.toggle('open');
+  });
+
+  // Add Tab key binding for TOC toggle
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Prevent default tabbing behavior
+      tocSidebar.classList.toggle('open');
+    }
+  });
+
+</script>
       </main>
       <footer class="container-footer">
         <div class="footer-copyright">
