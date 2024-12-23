@@ -279,22 +279,38 @@ Okasaki C. Purely Functional Data Structures. Cambridge University Press; 1998.<
       
     </div>
     
-      <!-- <form action="https://formspree.io/f/your-form-id" method="POST">
-  <label for="name">Name:</label><br>
-  <input type="text" id="name" name="name" required><br><br>
-  
-  <label for="email">Email:</label><br>
-  <input type="email" id="email" name="email" required><br><br>
-  
-  <label for="message">Message:</label><br>
-  <textarea id="message" name="message" rows="5" required></textarea><br><br>
-  
-  <button type="submit">Send</button>
-</form> -->
 
+        <!-- Button to load comments -->
+        <button id="comment-button" class="comment-button float-right center">Show Comments</button>
+
+        <!-- Comments Section, hidden by default -->
+        <div id="comments-section" style="display: none;">
+          <script src="https://utteranc.es/client.js"
+            repo="yakimk/wqt"        
+            issue-term="pathname"       
+            label="comment"             
+            theme="github-light"           
+            crossorigin="anonymous"
+            async>
+          </script>
+        </div>
+    
     
   </div>
 </article>
+<script>
+  // JavaScript to toggle the visibility of the comments section
+  document.getElementById("comment-button").addEventListener("click", function() {
+    var commentsSection = document.getElementById("comments-section");
+    if (commentsSection.style.display === "none") {
+      commentsSection.style.display = "block";
+      this.textContent = "Hide Comments";  // Change button text to "Hide Comments"
+    } else {
+      commentsSection.style.display = "none";
+      this.textContent = "Show Comments";  // Change button text back to "Show Comments"
+    }
+  });
+</script>
 
       </main>
       <footer class="container-footer">
